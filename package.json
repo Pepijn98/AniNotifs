@@ -1,0 +1,61 @@
+{
+    "name": "aninotifs",
+    "private": true,
+    "version": "0.0.5",
+    "description": "Send a webhook message when a new episode has been released",
+    "main": "src/index.ts",
+    "license": "MIT",
+    "homepage": "https://github.com/Pepijn98/AniNotifs#readme",
+    "engines": {
+        "node": ">=14"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Pepijn98/AniNotifs.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Pepijn98/AniNotifs/issues"
+    },
+    "author": {
+        "name": "Pepijn van den Broek",
+        "email": "pepijn@vdbroek.dev",
+        "url": "https://vdbroek.dev/"
+    },
+    "scripts": {
+        "deploy": "pm2 start ecosystem.config.js --env production",
+        "start": "cross-env NODE_ENV=production ts-node -r tsconfig-paths/register src/index.ts",
+        "dev": "cross-env NODE_ENV=development ts-node -r tsconfig-paths/register src/index.ts",
+        "prebuild": "rm -rf dist",
+        "pretest": "yarn pretty",
+        "build": "tsc",
+        "test": "tsc --noEmit",
+        "deps": "depcheck",
+        "format": "prettier --write \"src/**/*.{ts,js}\" \"./*.{ts,js}\"",
+        "lint": "eslint \"src/**/*.{ts,js}\" \"./*.{ts,js}\" --fix",
+        "pretty": "yarn format && yarn lint",
+        "clean": "rm -rf ./node_modules ./package-lock.json ./yarn.lock"
+    },
+    "dependencies": {
+        "chalk": "^4.1.0",
+        "eris": "abalabahaha/eris#dev",
+        "git-rev-sync": "^3.0.1",
+        "rss-feed-emitter": "Pepijn98/rss-feed-emitter",
+        "turndown": "^7.0.0"
+    },
+    "devDependencies": {
+        "@types/feedparser": "^2.2.3",
+        "@types/node": "^14.14.2",
+        "@types/turndown": "^5.0.0",
+        "@typescript-eslint/eslint-plugin": "^4.5.0",
+        "@typescript-eslint/parser": "^4.5.0",
+        "cross-env": "^7.0.2",
+        "depcheck": "1.2.0",
+        "eslint": "^7.12.0",
+        "eslint-config-prettier": "^6.14.0",
+        "eslint-plugin-import": "^2.22.1",
+        "prettier": "^2.1.2",
+        "ts-node": "^9.0.0",
+        "tsconfig-paths": "^3.9.0",
+        "typescript": "^4.0.3"
+    }
+}

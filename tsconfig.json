@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "dist",
+        "module": "commonjs",
+        "target": "esnext",
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": false,
+        "noImplicitReturns": false,
+        "resolveJsonModule": true,
+        "declaration": false,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "incremental": true,
+        "skipLibCheck": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "@types"
+        ],
+        "paths": {
+            "*": ["node_modules/*"],
+            "~/*": ["src/*"],
+            "@/*": ["*"]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "cron.ts"
+    ]
+}
