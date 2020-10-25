@@ -8,21 +8,21 @@ import { FeedItem, FeedError } from "./types";
 import { rversion, anime, avatars } from "./utils";
 import { Client } from "eris";
 
-const { executeWebhook } = new Client("");
+const { executeWebhook } = new Client(null);
 
 const emitter = new FeedEmitter({
     userAgent: "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0",
     skipFirstLoad: true
 });
 
-const { addRule, turndown } = new TurndownService({
+const tds = new TurndownService({
     headingStyle: "atx",
     bulletListMarker: "-",
     codeBlockStyle: "fenced",
     emDelimiter: "*"
 });
 
-addRule("cite", {
+tds.addRule("cite", {
     filter: ["cite"],
     replacement: (content: string) => `*${content}*`
 });
@@ -39,7 +39,7 @@ emitter.on(settings.feed.eventName, async (item: FeedItem) => {
     }
 
     if (isWatching) {
-        const description = turndown(item.description).split("|");
+        const description = tds.turndown(item.description).split("|");
         const urls = description.splice(0, 2);
 
         console.info(`[NEW] |> ${name}`);
