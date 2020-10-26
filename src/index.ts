@@ -8,7 +8,7 @@ import { FeedItem, FeedError } from "./types";
 import { rversion, anime, avatars } from "./utils";
 import { Client } from "eris";
 
-const { executeWebhook } = new Client(null);
+const client = new Client(null);
 
 const emitter = new FeedEmitter({
     userAgent: "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0",
@@ -43,41 +43,43 @@ emitter.on(settings.feed.eventName, async (item: FeedItem) => {
         const urls = description.splice(0, 2);
 
         console.info(`[NEW] |> ${name}`);
-        executeWebhook(settings.id, settings.token, {
-            username: "Your daily dose of anime",
-            avatarURL: avatars[Math.floor(Math.random() * avatars.length)],
-            embeds: [
-                {
-                    title: `${item.title.match(/\d{2}/giu)?.[0] || "00"} | ${name}`,
-                    color: Math.floor(Math.random() * 16777215),
-                    url: item.guid,
-                    description: `${urls.join("|")}\n${description.join("\n")}`,
-                    fields: [
-                        {
-                            name: "Seeders",
-                            value: item["nyaa:seeders"]["#"] || "0",
-                            inline: true
-                        },
-                        {
-                            name: "Leechers",
-                            value: item["nyaa:leechers"]["#"] || "0",
-                            inline: true
-                        },
-                        {
-                            name: "Downloads",
-                            value: item["nyaa:downloads"]["#"] || "0",
-                            inline: true
+        client
+            .executeWebhook(settings.id, settings.token, {
+                username: "Your daily dose of anime",
+                avatarURL: avatars[Math.floor(Math.random() * avatars.length)],
+                embeds: [
+                    {
+                        title: `${item.title.match(/\d{2}/giu)?.[0] || "00"} | ${name}`,
+                        color: Math.floor(Math.random() * 16777215),
+                        url: item.guid,
+                        description: `${urls.join("|")}\n${description.join("\n")}`,
+                        fields: [
+                            {
+                                name: "Seeders",
+                                value: item["nyaa:seeders"]["#"] || "0",
+                                inline: true
+                            },
+                            {
+                                name: "Leechers",
+                                value: item["nyaa:leechers"]["#"] || "0",
+                                inline: true
+                            },
+                            {
+                                name: "Downloads",
+                                value: item["nyaa:downloads"]["#"] || "0",
+                                inline: true
+                            }
+                        ],
+                        timestamp: item.pubdate ? item.pubdate.toISOString() : "",
+                        footer: {
+                            text: `AniNotifs (${pkg.version}) [${git.branch()}@${git.short()}]`
                         }
-                    ],
-                    timestamp: item.pubdate ? item.pubdate.toISOString() : "",
-                    footer: {
-                        text: `AniNotifs (${pkg.version}) [${git.branch()}@${git.short()}]`
                     }
-                }
-            ]
-        }).catch((e) => {
-            console.error(`Error: Failed to send webhook\n${e.stack}`);
-        });
+                ]
+            })
+            .catch((e) => {
+                console.error(`Error: Failed to send webhook\n${e.stack}`);
+            });
     }
 });
 
