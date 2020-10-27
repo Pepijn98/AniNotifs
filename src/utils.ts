@@ -9,7 +9,6 @@ export const anime = [
     "Kimi to Boku no Saigo no Senjou, Arui wa Sekai ga Hajimaru Seisen",
     "Kuma Kuma Kuma Bear",
     "Love Live! Nijigasaki Gakuen School Idol Doukoukai",
-    "Maesetsu!",
     "Mahouka Koukou no Rettousei S2",
     "Majo no Tabitabi",
     "Maou-jou de Oyasumi",
