@@ -12,8 +12,7 @@ export const anime = [
     "Mahouka Koukou no Rettousei S2",
     "Majo no Tabitabi",
     "Maou-jou de Oyasumi",
-    "Ochikobore Fruit Tart",
-    "Yuukoku no Moriarty"
+    "Ochikobore Fruit Tart"
 ];
 
 // NSFW look at your own risk ;)
