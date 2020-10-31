@@ -1,7 +1,7 @@
 export const rversion = /\d{2}v\d/iu;
 
 export const anime = [
-    "Adachi to Shimamura",
+    "Akudama Drive",
     "Assault Lily Bouquet",
     "Dogeza de Tanondemita",
     "Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka S3",
