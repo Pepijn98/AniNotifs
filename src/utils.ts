@@ -1,6 +1,7 @@
 export const rversion = /\d{2}v\d/iu;
 
 export const anime = [
+    "100-man no Inochi no Ue ni Ore wa Tatte Iru",
     "Akudama Drive",
     "Assault Lily Bouquet",
     "Dogeza de Tanondemita",
