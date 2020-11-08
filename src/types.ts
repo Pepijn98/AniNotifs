@@ -2,6 +2,13 @@
 
 import { Item, Meta, Image, Enclosure } from "feedparser";
 
+export interface FeedConfig {
+    url: string;
+    eventName: string;
+    refresh: number;
+    userAgent?: string;
+}
+
 export interface FeedItem extends Item {
     title: string;
     description: string;
@@ -25,4 +32,13 @@ export declare class FeedError extends Error {
     message: string;
     feed: string;
     constructor(type: string, message: string, feed?: string);
+}
+
+export interface Settings {
+    id: string;
+    token: string;
+    feeds: FeedConfig[];
+    anime: string[];
+    exceptions: string[];
+    avatars: string[];
 }
