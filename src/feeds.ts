@@ -30,11 +30,11 @@ export default class Feeds {
     private validate(item: FeedItem): { watching: boolean; name: string } {
         let watching = false;
         let name = "";
-        for (let i = 0; i < settings.anime.length; i++) {
+        for (const anime of settings.anime) {
             // Check if the settings.anime is something we're watching and if it isn't a v2, v3... release
-            if (item.title.includes(settings.anime[i]) && !item.title.match(rversion)) {
+            if (item.title.includes(anime) && !item.title.match(rversion)) {
                 watching = true;
-                name = settings.anime[i];
+                name = anime;
             }
         }
         return {
