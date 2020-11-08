@@ -2,7 +2,7 @@ import settings from "./settings";
 import chalk from "chalk";
 import FeedEmitter from "rss-feed-emitter";
 import Feeds from "./feeds";
-import { FeedError } from "./types";
+import { FeedError, FeedItem } from "./types";
 
 const emitter = new FeedEmitter({
     skipFirstLoad: true
@@ -11,7 +11,7 @@ const emitter = new FeedEmitter({
 const feeds = new Feeds();
 
 for (const feed of settings.feeds) {
-    emitter.on(feed.eventName, feeds[feed.eventName]);
+    emitter.on(feed.eventName, (item: FeedItem) => feeds[feed.eventName](item));
 }
 
 emitter.on("error", (error: FeedError) => {

@@ -7,12 +7,18 @@ import { FeedItem } from "./types";
 
 const rversion = /\d{2}v\d/iu;
 
-export default class Feeds {
+abstract class IndexSignature {
+    [k: string]: any;
+    [k: number]: undefined;
+}
+
+export default class Feeds extends IndexSignature {
     client: Client;
     tds: TurndownService;
-    [k: string]: unknown;
 
     constructor() {
+        super();
+
         this.client = new Client(null);
         this.tds = new TurndownService({
             headingStyle: "atx",
