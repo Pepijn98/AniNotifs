@@ -56,7 +56,6 @@ export default class Feeds extends IndexSignature {
         const numbers = item.title.match(/\d{2,3}/giu) || ["00", "00"];
         const episode = settings.exceptions.includes(name) ? numbers[1] : numbers[0];
 
-        // console.info(`[NEW] |> ${name.replaceAll("_", " ")}`);
         console.info(`[NEW] |> ${name.replace(/_/gui, " ")}`);
         try {
             await this.client.executeWebhook(settings.id, settings.token, {
@@ -64,7 +63,6 @@ export default class Feeds extends IndexSignature {
                 avatarURL: settings.avatars[Math.floor(Math.random() * settings.avatars.length)],
                 embeds: [
                     {
-                        // title: `${episode} | ${name.replaceAll("_", " ")}`,
                         title: `${episode} | ${name.replace(/_/gui, " ")}`,
                         color: Math.floor(Math.random() * 16777215),
                         url: item.guid,
