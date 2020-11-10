@@ -1,3 +1,5 @@
+import "./extensions";
+
 import settings from "./settings";
 import chalk from "chalk";
 import FeedEmitter from "rss-feed-emitter";

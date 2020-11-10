@@ -42,3 +42,8 @@ export interface Settings {
     exceptions: string[];
     avatars: string[];
 }
+
+export interface ValidateFeed {
+    watching: boolean;
+    name: string;
+}

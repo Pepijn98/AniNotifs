@@ -3,7 +3,7 @@ import settings from "./settings";
 import pkg from "@/package.json";
 import TurndownService from "turndown";
 import { Client } from "eris";
-import { FeedItem } from "./types";
+import { FeedItem, ValidateFeed } from "./types";
 
 const rversion = /\d{2}v\d/iu;
 
@@ -33,9 +33,10 @@ export default class Feeds extends IndexSignature {
         });
     }
 
-    private validate(item: FeedItem): { watching: boolean; name: string } {
+    private validate(item: FeedItem): ValidateFeed {
         let watching = false;
         let name = "";
+
         for (const anime of settings.anime) {
             // Check if the settings.anime is something we're watching and if it isn't a v2, v3... release
             if (item.title.includes(anime) && !item.title.match(rversion)) {
@@ -43,6 +44,7 @@ export default class Feeds extends IndexSignature {
                 name = anime;
             }
         }
+
         return {
             watching,
             name
@@ -56,14 +58,14 @@ export default class Feeds extends IndexSignature {
         const numbers = item.title.match(/\d{2,3}/giu) || ["00", "00"];
         const episode = settings.exceptions.includes(name) ? numbers[1] : numbers[0];
 
-        console.info(`[NEW] |> ${name.replace(/_/gui, " ")}`);
+        console.info(`[NEW] |> ${name.replaceAll("_", " ")}`);
         try {
             await this.client.executeWebhook(settings.id, settings.token, {
                 username: "Your daily dose of settings.anime",
                 avatarURL: settings.avatars[Math.floor(Math.random() * settings.avatars.length)],
                 embeds: [
                     {
-                        title: `${episode} | ${name.replace(/_/gui, " ")}`,
+                        title: `${episode} | ${name.replaceAll("_", " ")}`,
                         color: Math.floor(Math.random() * 16777215),
                         url: item.guid,
                         description: `${urls.join("|")}\n${description.join("\n")}`,
