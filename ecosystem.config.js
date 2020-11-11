@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name: "AniNotifs",
+            name: "Fischl",
             script: "ts-node",
             interpreter: `${process.env.NVM_BIN}/node`,
             args: "-r tsconfig-paths/register ./src/index.ts",
