@@ -1,20 +1,20 @@
 {
-    "name": "aninotifs",
+    "name": "fischl",
     "private": true,
-    "version": "0.1.2",
+    "version": "1.0.0",
     "description": "Send a webhook message when a new episode has been released",
     "main": "src/index.ts",
     "license": "MIT",
-    "homepage": "https://github.com/Pepijn98/AniNotifs#readme",
+    "homepage": "https://github.com/Pepijn98/Fischl#readme",
     "engines": {
         "node": ">=14"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Pepijn98/AniNotifs.git"
+        "url": "git+https://github.com/Pepijn98/Fischl.git"
     },
     "bugs": {
-        "url": "https://github.com/Pepijn98/AniNotifs/issues"
+        "url": "https://github.com/Pepijn98/Fischl/issues"
     },
     "author": {
         "name": "Pepijn van den Broek",
@@ -36,11 +36,15 @@
         "clean": "rm -rf ./node_modules ./package-lock.json ./yarn.lock"
     },
     "dependencies": {
+        "@kurozero/collection": "^0.5.1",
+        "bufferutil": "^4.0.2",
         "chalk": "^4.1.0",
         "eris": "abalabahaha/eris#dev",
+        "erlpack": "abalabahaha/erlpack",
         "git-rev-sync": "^3.0.1",
         "rss-feed-emitter": "Pepijn98/rss-feed-emitter",
-        "turndown": "^7.0.0"
+        "turndown": "^7.0.0",
+        "zlib-sync": "^0.1.7"
     },
     "devDependencies": {
         "@types/feedparser": "^2.2.3",

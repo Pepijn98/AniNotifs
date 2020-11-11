@@ -1,5 +1,6 @@
 // Since rss-feed-emitter has horrible ungly bad types I'll use my own
 
+import { Client, Message } from "eris";
 import { Item, Meta, Image, Enclosure } from "feedparser";
 
 export interface FeedConfig {
@@ -34,9 +35,19 @@ export declare class FeedError extends Error {
     constructor(type: string, message: string, feed?: string);
 }
 
-export interface Settings {
+export interface Webhook {
     id: string;
     token: string;
+    channel: string;
+}
+
+export interface Settings {
+    prefix: string;
+    owner: string;
+    guild: string;
+    id: string;
+    token: string;
+    webhook: Webhook;
     feeds: FeedConfig[];
     anime: string[];
     exceptions: string[];
@@ -46,4 +57,20 @@ export interface Settings {
 export interface ValidateFeed {
     watching: boolean;
     name: string;
+}
+
+export interface CommandContext {
+    client: Client;
+}
+
+export interface Command {
+    name: string;
+    aliases?: string[];
+    run(msg: Message, args: string[], context: CommandContext): Promise<unknown>;
+}
+
+export abstract class Command implements Command {}
+
+export interface Imported {
+    command: Command;
 }

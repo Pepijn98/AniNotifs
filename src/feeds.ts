@@ -16,10 +16,10 @@ export default class Feeds extends IndexSignature {
     client: Client;
     tds: TurndownService;
 
-    constructor() {
+    constructor(client: Client) {
         super();
 
-        this.client = new Client(null);
+        this.client = client;
         this.tds = new TurndownService({
             headingStyle: "atx",
             bulletListMarker: "-",
@@ -60,8 +60,9 @@ export default class Feeds extends IndexSignature {
 
         console.info(`[NEW] |> ${name.replaceAll("_", " ")}`);
         try {
-            await this.client.executeWebhook(settings.id, settings.token, {
-                username: "Your daily dose of settings.anime",
+            const message = await this.client.executeWebhook(settings.webhook.id, settings.webhook.token, {
+                wait: true,
+                username: "Your daily dose of anime",
                 avatarURL: settings.avatars[Math.floor(Math.random() * settings.avatars.length)],
                 embeds: [
                     {
@@ -93,6 +94,7 @@ export default class Feeds extends IndexSignature {
                     }
                 ]
             });
+            message.addReaction("🗑️");
         } catch (e) {
             console.error(`Error: Failed to send webhook\n${e.stack}`);
         }
