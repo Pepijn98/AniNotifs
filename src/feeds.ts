@@ -4,6 +4,7 @@ import pkg from "@/package.json";
 import TurndownService from "turndown";
 import { Client } from "eris";
 import { FeedItem, ValidateFeed } from "./types";
+import { shows, exceptions } from "./anime.json";
 
 const rversion = /\d{2}v\d/iu;
 
@@ -37,8 +38,8 @@ export default class Feeds extends IndexSignature {
         let watching = false;
         let name = "";
 
-        for (const anime of settings.anime) {
-            // Check if the settings.anime is something we're watching and if it isn't a v2, v3... release
+        for (const anime of shows) {
+            // Check if the anime is something we're watching and if it isn't a v2, v3... release
             if (item.title.includes(anime) && !item.title.match(rversion)) {
                 watching = true;
                 name = anime;
@@ -56,7 +57,7 @@ export default class Feeds extends IndexSignature {
         const urls = description.splice(0, 2);
 
         const numbers = item.title.match(/\d{2,3}/giu) || ["00", "00"];
-        const episode = settings.exceptions.includes(name) ? numbers[1] : numbers[0];
+        const episode = exceptions.includes(name) ? numbers[1] : numbers[0];
 
         console.info(`[NEW] |> ${name.replaceAll("_", " ")}`);
         try {

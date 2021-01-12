@@ -49,8 +49,6 @@ export interface Settings {
     token: string;
     webhook: Webhook;
     feeds: FeedConfig[];
-    anime: string[];
-    exceptions: string[];
     avatars: string[];
 }
 
