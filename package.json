@@ -1,7 +1,7 @@
 {
     "name": "fischl",
     "private": true,
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Send a webhook message when a new episode has been released",
     "main": "src/index.ts",
     "license": "MIT",

@@ -6,7 +6,8 @@ import { Client } from "eris";
 import { FeedItem, ValidateFeed } from "./types";
 import { shows, exceptions } from "./anime.json";
 
-const rversion = /\d{2}v\d/iu;
+// matches anything between v2 and vInfinity
+const rversion = /v([1-9]\d+|[2-9])/iu;
 
 abstract class IndexSignature {
     [k: string]: any;
