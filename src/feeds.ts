@@ -115,4 +115,11 @@ export default class Feeds extends IndexSignature {
             this.sendWebhook(item, name);
         }
     }
+
+    async shamanking(item: FeedItem): Promise<void> {
+        const { watching, name } = this.validate(item);
+        if (watching) {
+            this.sendWebhook(item, name);
+        }
+    }
 }

@@ -1,18 +1,26 @@
 {
     "shows": [
-        "Go-toubun no Hanayome S2",
-        "Horimiya",
-        "Kumo desu ga, Nani ka",
-        "Mushoku Tensei",
-        "Non Non Biyori Nonstop",
-        "Tensei Shitara Slime Datta Ken",
-        "Wonder Egg Priority",
+        "86 - Eighty Six",
+        "Dragon, Ie wo Kau.",
+        "Full Dive",
+        "Ijiranaide, Nagatoro-san",
+        "Isekai Maou to Shoukan Shoujo no Dorei Majutsu S2",
+        "Mairimashita Iruma-kun S2",
+        "Osananajimi ga Zettai ni Makenai Love Come",
+        "Seven Knights Revolution - Eiyuu no Keishousha",
+        "Shaman King (2021)",
+        "Slime Taoshite 300-nen, Shiranai Uchi ni Level Max ni Nattemashita",
+        "SSSS.Dynazenon",
+        "Tensura Nikki - Tensei Shitara Slime Datta Ken",
 
-        "Jujutsu Kaisen",
-        "Boruto - Naruto Next Generations",
+        "Kumo desu ga, Nani ka",
         "Pocket_Monsters_(2019)"
     ],
     "exceptions": [
+        "86 - Eighty Six",
+        "Shaman King (2021)",
+        "Slime Taoshite 300-nen, Shiranai Uchi ni Level Max ni Nattemashita",
+
         "Pocket_Monsters_(2019)"
     ]
 }
